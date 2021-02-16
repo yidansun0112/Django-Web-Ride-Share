@@ -8,7 +8,18 @@
 
 			<form action="" method="POST">
 				{% csrf_token %}
-				{{form}}
+				<p>Vehicle Type(*):</p>
+                                {{ form.vehicle_type}}
+				<hr>
+                                <p>License Plate Number(*):</p>
+                                {{ form.license_plate_number}}
+				<hr>
+				<p>Max Number Passengers(*):</p>
+                                {{ form.max_number_passengers}}
+				<hr>
+                                <p>Special Request:</p>
+                                {{ form.special_request}}
+				<hr>
 				
 				<input type="submit" name="Submit">
 			</form>
