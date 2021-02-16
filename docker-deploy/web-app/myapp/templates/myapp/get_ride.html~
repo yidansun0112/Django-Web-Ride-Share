@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+				
+					<th>Destination</th>
+					<th>Arrival</th>
+					<th>Passengers</th>
+                                        <th>Type</th>
+					<th>Request</th>
+				</tr>
+
+				{% for ride in rides %}
+
+				<tr>
+					<td>{{ride.destination}}</td>
+					<td>{{ride.arrival_time}}</td>
+					<td>{{ride.number_of_passengers}}</td>
+					<td>{{ride.vehicle_type}}</td>
+                                        <td>{{ride.special_request}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'confirm_ride' user.id ride.id %}">Confirm</a></td>
+                                        
+					
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+{% block content %}
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+		  <form method="get">
+                          <p>Vehicle type</p>
+			  {{myFilter.form.vehicle_type}}<hr>
+                          <p>Destination</p>
+                          {{myFilter.form.destination}}<hr>
+                          <p>DateTime Must in format: Y-m-d h:m:d</p>
+                          <p>eg.2020-2-5 12:30:12</p>
+                          <p>Arraival time window starts:</p>
+                          {{myFilter.form.start_time}}<hr>
+                          <p>end:</p>
+                          {{myFilter.form.end_time}}<hr>
+                          <p>Number of people in your party</p>
+                          {{myFilter.form.sharer_number}}<hr>
+                          <p>Special request</p>
+                          {{myFilter.form.special_request}}<hr>
+                          
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Destination </th>
+					<th>Arrival time</th>
+					<th>Number of passengers</th>
+                                        <th>vehicle type</th>
+					<th>special request</th>
+                                        <th>Join</th>
+				</tr>
+
+				{% for ride in my_rides %}
+
+				<tr>
+					<td>{{ride.destination}}</td>
+					<td>{{ride.arrival_time}}</td>
+					<td>{{ride.number_of_passengers}}</td>
+                                        <td>{{ride.vehicle_type}}</td>
+                                        <td>{{ride.special_request}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'confirm_join' user.id ride.id myFilter.form.sharer_number%}">Join</a></td>
+
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

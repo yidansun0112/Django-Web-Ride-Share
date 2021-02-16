@@ -1,0 +1,41 @@
+{% block content %}
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+                                {{ form.owner }}
+                                {{ form.status }}
+                                <p>Destination(*):</p>
+                                {{ form.destination }}
+				<hr>
+                                <p>Arrival Time(*): </p>
+                                <p>Must in format: Y-m-d h:m:d eg.2020-2-5 12:30:12</p>
+                                {{ form.arrival_time}}
+                                <p>Shared or not(*): </p>
+                                {{ form.shared_or_not }}
+                                <hr>
+                                <p>Max sharer number(You have to fill this if you want this ride to be shared): </p>
+                                {{ form.max_sharer_number }}
+                                <hr>
+                                <p>Number of passengers(*): </p>
+                                {{ form.number_of_passengers }}
+                                <hr>
+                                <p>Vehicle type(optional):</p>
+                                {{ form.vehicle_type }}
+                                <hr>
+                                <p>Special request(optional):</p>
+                                {{ form.special_request }}
+                                <hr>
+				
+				<input type="submit" name="Submit">
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

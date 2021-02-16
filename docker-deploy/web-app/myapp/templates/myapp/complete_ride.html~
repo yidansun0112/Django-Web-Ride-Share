@@ -1,0 +1,23 @@
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<p>Are you sure you want to complete "{{ride}}"?</p>
+
+			<form action="{% url 'complete_ride' ride.id  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-warning" href="{% url 'driver_ride' user.id %}">Cancel</a>
+
+				<input class="btn btn-danger" type="submit" name="Complete">
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

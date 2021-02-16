@@ -1,0 +1,64 @@
+
+    {% block content %}
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form}}
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Destination </th>
+					<th>Arrival time</th>
+					<th>Shared or not</th>
+					<th>Number of passengers</th>
+                                        <th>vehicle type</th>
+					<th>special request</th>
+                                        <th>driver</th>
+                                        <th>status</th>
+                                        <th>Vehicle license plate number</th>
+                                        <th>Vehicle max number of passenger</th>
+                                        <th>Update</th>
+					
+				</tr>
+
+				{% for ride in ride_users %}
+
+				<tr>
+					<td>{{ride.destination}}</td>
+					<td>{{ride.arrival_time}}</td>
+					<td>{{ride.shared_or_not}}</td>
+					<td>{{ride.number_of_passengers}}</td>
+                                        <td>{{ride.vehicle_type}}</td>
+                                        <td>{{ride.special_request}}</td>
+                                        <td>{{ride.driver.username}}</td>
+                                        <td>{{ride.status}}</td>
+                                        <td>{{ride.driver.vehicle.license_plate_number}}</td>
+                                        <td>{{ride.driver.vehicle.max_number_passengers}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_ride' ride.id %}">Update</a></td>
+
+					
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
