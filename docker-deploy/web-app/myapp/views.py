@@ -168,7 +168,9 @@ def completePage(request,pk):
     return render(request, 'myapp/complete_ride.html', context)
 
 def cancelDriverPage(request,pk):
-    driver = User.objects.get(id=pk)   
+    driver = User.objects.get(id=pk)
+    if driver.is_driver==False:
+        return redirect('not_driver')    
     if request.method == "POST":
         User.objects.filter(id=pk).update(is_driver=False)
         Vehicle.objects.filter(owner=driver).delete()
